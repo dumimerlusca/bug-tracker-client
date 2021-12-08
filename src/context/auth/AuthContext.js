@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
       }
     }
     try {
-      const res = await axios.post('/auth/register', user, config);
+      const res = await axios.post('/api/v1/auth/register', user, config);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.accessToken })
     } catch (error) {
       dispatch({ type: REGISTER_FAIL, payload: error.response.data.error })
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.post('/auth/login', formData, config);
+      const res = await axios.post('/api/v1/auth/login', formData, config);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.accessToken })
     } catch (error) {
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.error })
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
       }
     }
     try {
-      await axios.post('/auth/logout', config);
+      await axios.post('/api/v1/auth/logout', config);
       dispatch({ type: LOGOUT })
     } catch (error) {
       dispatch({ type: AUTH_ERROR })
@@ -90,7 +90,7 @@ const AuthProvider = ({ children }) => {
     // Set token in global headers
     setAuthToken(state.accessToken);
     try {
-      const res = await axios.post('/auth/me');
+      const res = await axios.post('/api/v1/auth/me');
       dispatch({ type: USER_LOADED, payload: res.data.data })
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.message })
@@ -100,7 +100,7 @@ const AuthProvider = ({ children }) => {
   // Check refresh token
   const checkRefreshToken = async () => {
     try {
-      const res = await axios.post('/auth/refresh')
+      const res = await axios.post('/api/v1/auth/refresh')
       if (res.data.accessToken) {
         dispatch({ type: REFRESH_TOKEN, payload: res.data.accessToken });
       }

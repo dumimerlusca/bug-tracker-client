@@ -29,7 +29,7 @@ const UsersProvider = ({ children }) => {
   const getUsers = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('/users');
+      const res = await axios.get('/api/v1/users');
       dispatch({ type: GET_USERS_SUCCESS, payload: res.data.data })
     } catch (error) {
       dispatch({ type: GET_USERS_FAIL, payload: error.response.data.error })
@@ -45,7 +45,7 @@ const UsersProvider = ({ children }) => {
       },
     }
     try {
-      const res = await axios.put(`/users/${id}`, data, config)
+      const res = await axios.put(`/api/v1/users/${id}`, data, config)
       dispatch({ type: UPDATE_USER_SUCCESS })
     } catch (error) {
       dispatch({ type: UPDATE_USER_FAIL, payload: error.response.data.error })
