@@ -30,7 +30,7 @@ const CommentsProvider = ({ children }) => {
   const getComments = async (ticketId) => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/v1/tickets/${ticketId}/comments`);
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets/${ticketId}/comments`);
       dispatch({ type: GET_COMMENTS_SUCCESS, payload: res.data.data })
     } catch (error) {
       dispatch({ type: GET_COMMENTS_FAIL, payload: error.response.data.error })
@@ -45,7 +45,7 @@ const CommentsProvider = ({ children }) => {
       }
     }
     try {
-      await axios.post(`/api/v1/tickets/${ticketId}/comments`, comment, config);
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets/${ticketId}/comments`, comment, config);
       dispatch({ type: ADD_COMMENT_SUCCESS })
     } catch (error) {
       dispatch({ type: ADD_COMMENT_FAIL, payload: error.response.data.error })
@@ -55,7 +55,7 @@ const CommentsProvider = ({ children }) => {
   // Delete comment
   const deleteComment = async (id) => {
     try {
-      await axios.delete(`/api/v1/comments/${id}`)
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/v1/comments/${id}`)
       dispatch({ type: DELETE_COMMENT_SUCCESS })
     } catch (error) {
       dispatch({ type: DELETE_COMMENT_FAIL, payload: error.response.data.error })
@@ -70,7 +70,7 @@ const CommentsProvider = ({ children }) => {
       }
     }
     try {
-      await axios.put(`/api/v1/comments/${id}`, data, config)
+      await axios.put(`${process.env.REACT_APP_BASE_URL}/api/v1/comments/${id}`, data, config)
       dispatch({ type: UPDATE_COMMENT_SUCCESS })
     } catch (error) {
       dispatch({ type: UPDATE_COMMENT_FAIL })

@@ -34,7 +34,7 @@ const ProjectsProvider = ({ children }) => {
   const getProjects = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/v1/projects');
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/projects`);
       dispatch({ type: GET_PROJECTS_SUCCESS, payload: res.data.data })
     } catch (error) {
       console.error(error)
@@ -45,7 +45,7 @@ const ProjectsProvider = ({ children }) => {
   const getMyProjects = async (userId) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/v1/projects?user=${userId}`);
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/projects?user=${userId}`);
       dispatch({ type: GET_MY_PROJECTS_SUCCESS, payload: res.data.data })
     } catch (error) {
       console.error(error)
@@ -60,7 +60,7 @@ const ProjectsProvider = ({ children }) => {
       }
     }
     try {
-      const res = await axios.post('/api/v1/projects', project, config);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v1/projects`, project, config);
       dispatch({ type: CREATE_PROJECT_SUCCESS })
       getProjects();
     } catch (error) {
@@ -72,7 +72,7 @@ const ProjectsProvider = ({ children }) => {
   const getProject = async (id) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/v1/projects/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/projects/${id}`);
       dispatch({ type: GET_PROJECT_SUCCESS, payload: res.data.data })
     } catch (error) {
       dispatch({ type: GET_PROJECT_FAIL })
@@ -82,7 +82,7 @@ const ProjectsProvider = ({ children }) => {
   // Delete project
   const deleteProject = async (id) => {
     try {
-      await axios.delete(`/api/v1/projects/${id}`)
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/v1/projects/${id}`)
     } catch (error) {
       console.error(error)
     }
@@ -97,7 +97,7 @@ const ProjectsProvider = ({ children }) => {
       }
     }
     try {
-      const res = await axios.put(`/api/v1/projects/${id}`, data, config);
+      const res = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/v1/projects/${id}`, data, config);
       dispatch({ type: UPDATE_PROJECT_SUCCESS })
       getProject(id);
     } catch (error) {

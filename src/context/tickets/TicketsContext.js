@@ -40,7 +40,7 @@ const TicketsProvider = ({ children }) => {
   const getTickets = async (query) => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/v1/tickets${query ? query : ""}`)
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets${query ? query : ""}`)
       dispatch({ type: GET_TICKETS_SUCCESS, payload: res.data })
     } catch (error) {
       dispatch({ type: GET_TICKETS_FAIL, payload: error.response.data.error })
@@ -51,7 +51,7 @@ const TicketsProvider = ({ children }) => {
   const getMyTickets = async (userId, query) => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/v1/tickets?user=${userId}${query ? query : ""}`)
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets?user=${userId}${query ? query : ""}`)
       dispatch({ type: GET_MY_TICKETS_SUCCESS, payload: res.data })
     } catch (error) {
       dispatch({ type: GET_MY_TICKETS_FAIL })
@@ -62,7 +62,7 @@ const TicketsProvider = ({ children }) => {
   const getTicket = async (id) => {
     setLoading(true)
     try {
-      const res = await axios.get(`/api/v1/tickets/${id}`)
+      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets/${id}`)
       dispatch({ type: GET_TICKET_SUCCESS, payload: res.data.data })
     } catch (error) {
       dispatch({ type: GET_TICKET_FAIL, payload: error.response.data.error })
@@ -78,7 +78,7 @@ const TicketsProvider = ({ children }) => {
       }
     }
     try {
-      const res = await axios.post(`/api/v1/projects/${project}/tickets`, ticket, config);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v1/projects/${project}/tickets`, ticket, config);
       dispatch({ type: ADD_TICKET_SUCCESS })
     } catch (error) {
       dispatch({ type: ADD_TICKET_FAIL, payload: error.response.data.error })
@@ -94,7 +94,7 @@ const TicketsProvider = ({ children }) => {
       }
     }
     try {
-      const res = await axios.put(`/api/v1/tickets/${id}`, data, config)
+      const res = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets/${id}`, data, config)
       dispatch({ type: UPDATE_TICKET_SUCCESS })
     } catch (error) {
       dispatch({ type: UPDATE_TICKET_FAIL, payload: error.response.data.error })
@@ -105,7 +105,7 @@ const TicketsProvider = ({ children }) => {
   const deleteTicket = async (id) => {
     setLoading(true)
     try {
-      await axios.delete(`/api/v1/tickets/${id}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/v1/tickets/${id}`);
       dispatch({ type: DELETE_TICKET_SUCCESS })
     } catch (error) {
       dispatch({ type: DELETE_TICKET_FAIL, payload: error.response.data.error })
