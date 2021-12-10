@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
   // Login user
   const login = async (formData) => {
     setLoading(true);
+    console.log('Login:', formData)
     const config = {
       headers: {
         'Content-type': 'application/json'
