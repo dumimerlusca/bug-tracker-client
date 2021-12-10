@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.post('https://bug-tracker-issue-tracker.herokuapp.com/api/v1/auth/login', formData, config);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v1/auth/login`, formData, config);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.accessToken })
     } catch (error) {
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.error })
