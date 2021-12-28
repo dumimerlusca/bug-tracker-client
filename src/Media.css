@@ -1,13 +1,5 @@
-@media (max-width: 1280px) {
-  .main_container {
-    width: 100%;
-  }
-
-  .side_menu {
-    left: -300px;
-  }
-
-  .side_menu_toggler {
-    display: block;
-  }
+@media (max-width: 1200px) {
+	.main_container {
+		width: 100%;
+	}
 }

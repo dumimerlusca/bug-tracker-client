@@ -1,24 +1,44 @@
-import React from 'react';
-import formatDate from '../../utils/formatDate';
-import { FaTrashAlt } from 'react-icons/fa';
-import { BsPencilSquare } from 'react-icons/bs'
+import React from "react";
+import formatDate from "../../utils/formatDate";
+import { FaTrashAlt } from "react-icons/fa";
+import { BsPencilSquare } from "react-icons/bs";
 
 const Comment = ({ comment, handleDelete, handleEdit }) => {
-  const { body, createdAt, user, _id } = comment
-  return (
-    <div className="py-3 rounded w-full px-5 shadow-lg bg-white mb-4 relative">
-      <div className="flex gap-5 items-center">
-        <h3 className="text-lg font-bold my-3">{user.name}</h3>
-        <span className="font-thin text-sm">{formatDate(new Date(createdAt))}</span>
-      </div>
-      <p className="font-thin text-md">{body}</p>
+	const { body, createdAt, user, _id } = comment;
+	return (
+		<div className='card shadow p-3 mb-3'>
+			<div className='row mb-2'>
+				<div className='col-12'>
+					<h4 className='my-0'>{user.name}</h4>
+				</div>
+				<div className='col-12'>
+					<span className='font-thin text-sm'>
+						{formatDate(new Date(createdAt))}
+					</span>
+				</div>
+			</div>
+			<p className='fw-light'>{body}</p>
 
-      <div className="inline-flex absolute top-1/2 right-0 gap-1" style={{ transform: 'translateY(-50%)' }}>
-        <button onClick={() => { handleEdit(comment) }}> <BsPencilSquare /></button>
-        <button onClick={() => { handleDelete(_id) }}> <FaTrashAlt /></button>
-      </div>
-    </div>
-  )
-}
+			<div className='btn-group'>
+				<button
+					className='btn btn-primary btn-sm flex-grow-0'
+					onClick={() => {
+						handleEdit(comment);
+					}}
+				>
+					<BsPencilSquare />
+				</button>
+				<button
+					className='btn btn-sm btn-danger flex-grow-0'
+					onClick={() => {
+						handleDelete(_id);
+					}}
+				>
+					<FaTrashAlt />
+				</button>
+			</div>
+		</div>
+	);
+};
 
-export default Comment
+export default Comment;

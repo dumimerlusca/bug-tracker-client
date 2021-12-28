@@ -1,46 +1,52 @@
-import React from 'react';
-import useTicketsContext from '../../context/tickets/TicketsContext';
-import TicketsTable from './TicketsTable';
-import useAuthContext from '../../context/auth/AuthContext';
+import React, { Fragment } from "react";
+import useTicketsContext from "../../context/tickets/TicketsContext";
+import TicketsTable from "./TicketsTable/TicketsTable";
+import useAuthContext from "../../context/auth/AuthContext";
+import PageTitle from "../layout/PageTitle/PageTitle";
 
 const MyTickets = () => {
-  const {
-    myTickets,
-    getMyTickets,
-    myTicketsCurrentPage,
-    myTicketsTotalPages
-  } = useTicketsContext();
-  const { user } = useAuthContext();
+	const { myTickets, getMyTickets, myTicketsCurrentPage, myTicketsTotalPages } =
+		useTicketsContext();
+	const { user } = useAuthContext();
 
-  const nextPage = () => {
-    if (myTicketsCurrentPage >= myTicketsTotalPages) {
-      return;
-    }
-    getMyTickets(user._id, `&page=${myTicketsCurrentPage + 1}`)
-  }
-  const prevPage = () => {
-    if (myTicketsCurrentPage <= 1) {
-      return;
-    }
-    getMyTickets(user._id, `&page=${myTicketsCurrentPage - 1}`)
-  }
+	const nextPage = () => {
+		if (myTicketsCurrentPage >= myTicketsTotalPages) {
+			return;
+		}
+		getMyTickets(user._id, `&page=${myTicketsCurrentPage + 1}`);
+	};
+	const prevPage = () => {
+		if (myTicketsCurrentPage <= 1) {
+			return;
+		}
+		getMyTickets(user._id, `&page=${myTicketsCurrentPage - 1}`);
+	};
 
-  return (
-    <div className="w-full">
-      <h1 className="text-xl m-5 font-thin">My tickets</h1>
-      <TicketsTable tickets={myTickets} />
-      <div className="inline-flex gap-5 p-5 float-right">
-        <button onClick={prevPage}>Prev</button>
-        <div>
-          <span>
-            {myTicketsCurrentPage}...
-          </span>
-          <span>{myTicketsTotalPages}</span>
-        </div>
-        <button onClick={nextPage}>Next</button>
-      </div>
-    </div>
-  )
-}
+	return (
+		<Fragment>
+			<PageTitle>My tickets</PageTitle>
+			<TicketsTable tickets={myTickets} />
+			<nav aria-label='Page navigation example'>
+				<ul className='pagination justify-content-center'>
+					<li className='page-item'>
+						<button className='page-link'>Previous</button>
+					</li>
+					<li className='page-item'>
+						<button className='page-link'>1</button>
+					</li>
+					<li className='page-item'>
+						<button className='page-link'>2</button>
+					</li>
+					<li className='page-item'>
+						<button className='page-link'>3</button>
+					</li>
+					<li className='page-item'>
+						<button className='page-link'>Next</button>
+					</li>
+				</ul>
+			</nav>
+		</Fragment>
+	);
+};
 
-export default MyTickets
+export default MyTickets;
