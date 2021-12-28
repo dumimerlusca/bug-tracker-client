@@ -14,6 +14,8 @@ import Home from "./pages/Home";
 import DashboardHome from "./pages/DashboardHome/DashboardHome";
 import UserProfile from "./pages/UserProfile";
 
+console.log("Hello there");
+
 function App() {
 	return (
 		<Router>
