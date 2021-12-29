@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import SideMenu from "../components/layout/SideMenu/SideMenu";
 import DashboardHeader from "../components/layout/DashboardHeader/DashboardHeader";
 import { Outlet } from "react-router";
-import { useNavigate } from "react-router-dom";
 import useUsersContext from "../context/users/UsersContext";
 import useProjectsContext from "../context/projects/ProjectsContext";
 import useTicketsContext from "../context/tickets/TicketsContext";
@@ -11,7 +10,6 @@ import useAuthContext from "../context/auth/AuthContext";
 import BackAndForwardNavigation from "../components/layout/BackAndForwardNavigation/BackAndForwardNavigation";
 
 const Dashboard = () => {
-	const navigate = useNavigate();
 	const { getUsers } = useUsersContext();
 	const { getProjects, getMyProjects } = useProjectsContext();
 	const { getTickets, getMyTickets } = useTicketsContext();
@@ -21,6 +19,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		fetchData();
+		//eslint-disable-next-line
 	}, []);
 
 	const fetchData = async () => {

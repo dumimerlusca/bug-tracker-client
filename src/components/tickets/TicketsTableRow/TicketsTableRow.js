@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import useAuthContext from "../../../context/auth/AuthContext";
 import formatDate from "../../../utils/formatDate";
 const TicketsTableRow = ({ ticket }) => {
 	const {
@@ -15,7 +14,6 @@ const TicketsTableRow = ({ ticket }) => {
 		_id,
 	} = ticket;
 	const navigate = useNavigate();
-	const { user } = useAuthContext();
 
 	const handleOnClick = () => {
 		navigate(`/dashboard/tickets/${_id}`);

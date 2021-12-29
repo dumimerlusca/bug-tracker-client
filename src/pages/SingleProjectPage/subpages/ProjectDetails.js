@@ -2,7 +2,6 @@ import React from "react";
 import useProjectsContext from "../../../context/projects/ProjectsContext";
 import TicketsTable from "../../../components/tickets/TicketsTable/TicketsTable";
 import UsersTable from "../../../components/users/UsersTable";
-import Alert from "../../../components/layout/Alert/Alert";
 
 const ProjectDetails = () => {
 	const { currentProject } = useProjectsContext();

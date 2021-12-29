@@ -33,3 +33,9 @@ svg {
 .active_user {
 	@apply bg-primary-300;
 }
+
+@media (max-width: 1200px) {
+	.main_container {
+		width: 100%;
+	}
+}

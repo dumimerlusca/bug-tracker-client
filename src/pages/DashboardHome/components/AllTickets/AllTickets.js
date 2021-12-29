@@ -4,20 +4,7 @@ import TicketsTable from "../../../../components/tickets/TicketsTable/TicketsTab
 import SearchForm from "../../../../components/layout/SearchForm/SearchForm";
 
 const AllTickets = () => {
-	const { tickets, getTickets, currentPage, totalPages } = useTicketsContext();
-
-	const nextPage = () => {
-		if (currentPage >= totalPages) {
-			return;
-		}
-		getTickets(`?page=${currentPage + 1}`);
-	};
-	const prevPage = () => {
-		if (currentPage <= 1) {
-			return;
-		}
-		getTickets(`?page=${currentPage - 1}`);
-	};
+	const { tickets } = useTicketsContext();
 
 	return (
 		<Fragment>

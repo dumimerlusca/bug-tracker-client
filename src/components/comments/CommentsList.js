@@ -7,14 +7,8 @@ import Alert from "../layout/Alert/Alert";
 import useTicketsContext from "../../context/tickets/TicketsContext";
 
 const CommentsList = () => {
-	const {
-		comments,
-		alert,
-		getComments,
-		deleteComment,
-		updateComment,
-		clearAlerts,
-	} = useCommentsContext();
+	const { comments, alert, getComments, deleteComment, clearAlerts } =
+		useCommentsContext();
 	const { currentTicket } = useTicketsContext();
 	const { setAlert } = useAlertContext();
 	const [isFormVisible, setIsFormVisible] = useState(false);
@@ -26,7 +20,7 @@ const CommentsList = () => {
 			setAlert(alert);
 			clearAlerts();
 		}
-	}, [alert]);
+	}, [alert, clearAlerts, setAlert]);
 
 	const handleClick = () => {
 		if (isFormVisible) {

@@ -46,7 +46,7 @@ const TicketDetails = () => {
 			setAlert(alert);
 			clearAlerts();
 		}
-	}, [alert]);
+	}, [alert, setAlert, clearAlerts]);
 
 	if (loading) {
 		return <Loading />;

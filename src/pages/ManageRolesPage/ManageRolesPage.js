@@ -4,7 +4,7 @@ import useUsersContext from "../../context/users/UsersContext";
 import ManageRolesForm from "./components/ManageRolesForm/ManageRolesForm";
 
 const ManageRoles = () => {
-	const { getUsers, loading, users } = useUsersContext();
+	const { getUsers, users } = useUsersContext();
 
 	useEffect(() => {
 		if (!users) {
