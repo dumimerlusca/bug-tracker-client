@@ -73,6 +73,7 @@ const AuthProvider = ({ children }) => {
 			);
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data.accessToken });
 		} catch (error) {
+			console.log(error);
 			dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
 		}
 	};
