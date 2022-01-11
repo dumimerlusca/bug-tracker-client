@@ -5,13 +5,13 @@ const prioritys = ["high", "medium", "low", "all"];
 const FilterByPriorityDropdown = ({ filterTicketsByPriority }) => {
 	return (
 		<div className='dropdown'>
-			<a
-				className='text-decoration-none text-white dropdown-toggle'
+			<button
+				className='btn btn-link text-white fs-5 fw-bold p-0 m-0 text-decoration-none dropdown-toggle'
 				type='button'
 				data-bs-toggle='dropdown'
 			>
 				Priority
-			</a>
+			</button>
 			<ul className='dropdown-menu collapse'>
 				{prioritys.map((priority, index) => {
 					return (

@@ -26,7 +26,7 @@ const useLoginForm = () => {
 		// eslint-disable-next-line
 	}, [alert]);
 
-	const onChangeHandler = e => {
+	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		switch (e.target.name) {
 			case "email": {
 				setEmail(e.target.value);
@@ -41,8 +41,9 @@ const useLoginForm = () => {
 		}
 	};
 
-	const onSubmitHandler = e => {
+	const onSubmitHandler = (e: React.FormEvent) => {
 		e.preventDefault();
+		console.log("Submit");
 		if (email.trim() === "" || password.trim() === "") {
 			setAlert({ message: "Please enter email and password", type: "danger" });
 			return;

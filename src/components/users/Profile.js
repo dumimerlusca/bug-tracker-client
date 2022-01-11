@@ -20,7 +20,7 @@ const Profile = () => {
 			setAlert(alert);
 			clearAlerts();
 		}
-	}, [alert]);
+	}, [alert, setAlert, clearAlerts]);
 
 	const handleOnChange = e => {
 		setNewProfile({ ...newProfile, [e.target.name]: e.target.value });

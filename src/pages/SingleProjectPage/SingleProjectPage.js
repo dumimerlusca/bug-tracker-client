@@ -23,14 +23,12 @@ const SingleProjectPage = () => {
 		};
 
 		fetchData();
-		//eslint disable next-line
+		//eslint-disable-next-line
 	}, []);
 
 	if (loading) {
 		return <Loading />;
 	}
-
-	const { _id } = currentProject;
 
 	return (
 		<Fragment>

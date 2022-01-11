@@ -1,5 +1,4 @@
 import "./App.css";
-import "./Media.css";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import React from "react";
@@ -13,10 +12,6 @@ import AdminOnly from "./components/routing/AdminOnly";
 import Home from "./pages/Home";
 import DashboardHome from "./pages/DashboardHome/DashboardHome";
 import UserProfile from "./pages/UserProfile";
-
-console.log("Hello there");
-
-console.log("Hello this is test branch");
 
 function App() {
 	return (

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./SideMenu.css";
 import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
-import { FaProjectDiagram, FaUserCog, FaUsers } from "react-icons/fa";
+import { FaProjectDiagram, FaUsers } from "react-icons/fa";
 import { IoBug } from "react-icons/io5";
 import { AiOutlineProject } from "react-icons/ai";
 import { GiTicket } from "react-icons/gi";
@@ -18,6 +18,7 @@ const SideMenu = () => {
 		if (window.innerWidth < 1280) {
 			hideSideMenu();
 		}
+		//eslint-disable-next-line
 	}, []);
 
 	return (

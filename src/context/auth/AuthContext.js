@@ -73,6 +73,7 @@ const AuthProvider = ({ children }) => {
 			);
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data.accessToken });
 		} catch (error) {
+			console.log(error);
 			dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
 		}
 	};
@@ -97,7 +98,6 @@ const AuthProvider = ({ children }) => {
 
 	// Load user
 	const loadUser = async () => {
-		console.log(state.accessToken);
 		if (!state.accessToken) return;
 		setLoading(true);
 		// Set token in global headers

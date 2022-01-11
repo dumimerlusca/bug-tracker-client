@@ -3,12 +3,10 @@ import useTicketsTable from "./useTicketsTable";
 import PropTypes from "prop-types";
 import "./TicketsTable.css";
 import TicketsTableRow from "../TicketsTableRow/TicketsTableRow";
-import SearchForm from "../../layout/SearchForm/SearchForm";
 import FilterByPriorityDropdown from "../FilterByPriorityDropdown/FilterByPriorityDropdown";
 
 const TicketsTable = ({ tickets, showProject }) => {
-	const { filteredTickets, filterTicketsByPriority, tableBody } =
-		useTicketsTable(tickets);
+	const { filteredTickets, filterTicketsByPriority } = useTicketsTable(tickets);
 
 	return (
 		<table className='tickets_table table table-striped table-hover'>
