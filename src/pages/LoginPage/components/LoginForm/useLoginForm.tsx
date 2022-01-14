@@ -12,19 +12,17 @@ const useLoginForm = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (isAuthenticated && !loading) {
+		if (isAuthenticated) {
 			navigate("/dashboard");
 		}
-		// eslint-disable-next-line
-	}, [isAuthenticated, loading]);
+	}, [isAuthenticated, navigate]);
 
 	useEffect(() => {
 		if (alert) {
 			setAlert(alert);
 			clearAlerts();
 		}
-		// eslint-disable-next-line
-	}, [alert]);
+	}, [alert, setAlert, clearAlerts]);
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		switch (e.target.name) {
@@ -66,6 +64,7 @@ const useLoginForm = () => {
 		onSubmitHandler,
 		loginAsDemoAdmin,
 		onChangeHandler,
+		loading,
 	};
 };
 

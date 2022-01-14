@@ -9,6 +9,7 @@ const Login = () => {
 		onSubmitHandler,
 		loginAsDemoAdmin,
 		onChangeHandler,
+		loading,
 	} = useLoginForm();
 
 	return (
@@ -60,7 +61,9 @@ const Login = () => {
 				</button>
 			</div>
 			<div className='d-grid col'>
-				<input type='submit' className='btn btn-primary' />
+				<button type='submit' className='btn btn-primary'>
+					{loading ? <div className='spinner-border'></div> : "Submit"}
+				</button>
 			</div>
 		</form>
 	);
