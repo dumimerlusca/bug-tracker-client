@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
 		isAuthenticated: null,
 		accessToken: localStorage.getItem("accessToken"),
 		alert: null,
-		loading: true,
+		loading: false,
 		user: null,
 	};
 
